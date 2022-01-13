@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset = "utf-8"></meta>
+<title>+</title>
+<link rel = "stylesheet" href = "style.css">
+<script>
+var lhs;
+var rhs;
+var aniRef;
+var aniCode="";
+var outputRef;
+
+function init(){
+	lhs = document.getElementById('lhs').value;
+	rhs = document.getElementById('rhs').value;
+	aniRef = document.getElementById('ani');
+	outputRef = document.getElementById('output');
+	aniCode="";
+}
+
+function plusRun(){
+	init();
+	outputRef.innerHTML = lhs+rhs;
+	for(var i = 0; i < lhs.length; i++)
+		aniCode+="<div class='box'>"+lhs.charAt(i)+"</div>";
+	aniCode+="<div class='box box-invisible'>"+"</div>";
+	for(var i = 0; i < lhs.length; i++)
+		aniCode+="<div class='box box-left'>"+rhs.charAt(i)+"</div>";
+	aniRef.innerHTML = aniCode;
+}
+
+function plusStop(){
+	init();
+	for(var i = 0; i < lhs.length; i++)
+		aniCode+="<div class='box'>"+lhs.charAt(i)+"</div>";
+	aniCode+="<div class='box box-invisible'>"+"</div>";
+	for(var i = 0; i < lhs.length; i++)
+		aniCode+="<div class='box'>"+rhs.charAt(i)+"</div>";
+	aniRef.innerHTML = aniCode;
+}
+function homepage(){
+	window.open("../homepage.html","_self");
+}
+</script>
+</head>
+<body bgcolor = #f5f5dc>
+	<table width=100%>
+		<td>
+			<font size=25>&nbsp;+</font>
+		</td>
+		<td align=right>
+			<button onclick="homepage()" class="myButton">homepage</button>
+		</td>
+	</table>
+	<hr>
+	<table class="myTable">
+	<tr>
+		<td>
+			<input type=text id='lhs' class='myText'>
+		</td>
+		<td>
+			+
+		</td>
+		<td>
+			<input type=text id='rhs' class='myText'>
+		</td>
+	</tr>
+	</table>
+	<div align = center>
+		<button onclick="plusRun()" class="myButton">run</button>&nbsp;
+		<button onclick="plusStop()" class="myButton">stop</button>
+	</div>
+	<div class="container" id="ani">
+	</div>
+	<table class="myTable">
+	<tr>
+		<td>
+			<font size=5>Output:</font>
+		</td>
+		<td>
+			<div id='output' class='myText'></div>
+		</td>
+	</tr>
+	</table>
+</body>
+</html>

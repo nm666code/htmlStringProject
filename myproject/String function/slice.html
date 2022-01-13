@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset = "utf-8"></meta>
+<title>Slice</title>
+<link rel = "stylesheet" href = "style.css">
+<script>
+var timerid;
+var inString;
+var begin;
+var end;
+var aniRef;
+var aniRef2;
+var outputRef;
+var cur = 0;
+var speed = 1000;
+var aniCode = "";
+var aniCode2 = "";
+
+function init(){
+	inString = document.getElementById('inString').value;
+	begin = document.getElementById('begin').value;
+	end = document.getElementById('end').value;
+	aniRef = document.getElementById('ani');
+	aniRef2 = document.getElementById('ani2');
+	outputRef = document.getElementById('output');
+	aniCode = "";
+	aniCode2 = "";
+	cur = begin;
+}
+
+function sliceRun(){
+	init();
+	outputRef.innerHTML = inString.slice(begin,end);
+	start();
+}
+
+function sliceStop(){
+	init();
+	stop();
+	reset();
+}
+
+function next(){
+	if(cur <= inString.length){
+		draw();
+		cur++;
+	}
+}
+
+function draw(){
+	aniCode = "";
+	aniCode2 = "";
+	for(var i = 0; i < inString.length; i++){
+		if(i>=begin&&i<=cur&&i<end){
+			aniCode+="<div class='box' style='background-color:yellow;'>"+inString.charAt(i)+"</div>";
+			aniCode2+="<div class='box' style='background-color:yellow;'>"+i+"</div>";
+		}
+		else if(i==end&&cur>=i){
+			aniCode+="<div class='box' style='background-color:Lime;'>"+inString.charAt(i)+"</div>";
+			aniCode2+="<div class='box' style='background-color:Lime;'>"+i+"</div>";
+		}
+		else{
+			aniCode+="<div class='box'>"+inString.charAt(i)+"</div>";
+			aniCode2+="<div class='box'>"+i+"</div>";
+		}
+	}
+	aniRef.innerHTML = aniCode;
+	aniRef2.innerHTML = aniCode2;
+}
+
+function reset(){
+	aniCode = "";
+	aniCode2 = "";
+	for(var i = 0; i < inString.length; i++){
+		aniCode+="<div class='box'>"+inString.charAt(i)+"</div>";
+		aniCode2+="<div class='box'>"+i+"</div>";
+	}
+	aniRef.innerHTML = aniCode;
+	aniRef2.innerHTML = aniCode2;
+}
+
+function start(){
+	window.clearInterval(timerid);
+	timerid = window.setInterval("next();", speed);
+}
+	
+function stop(){
+	window.clearInterval(timerid);
+}
+
+function homepage(){
+	window.open("../homepage.html","_self");
+}
+</script>
+</head>
+<body bgcolor = #f5f5dc>
+	<table width=100%>
+		<td>
+			<font size=25>&nbsp;String.Slice(Begin,End)</font>
+		</td>
+		<td align=right>
+			<button onclick="homepage()" class="myButton">homepage</button>
+		</td>
+	</table>
+	<hr>
+	<table class="myTable">
+	<tr>
+		<td>
+			<font size=5>String:</font>
+		</td>
+		<td>
+			<input type=text id='inString' class='myText'>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<font size=5>Begin:</font>
+		</td>
+		<td>
+			<input type=number id='begin' class='myText'>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<font size=5>End:</font>
+		</td>
+		<td>
+			<input type=number id='end' class='myText'>
+		</td>
+	</tr>
+	</table>
+	<div align = center>
+		<button onclick="sliceRun()" class="myButton">run</button>&nbsp;
+		<button onclick="sliceStop()" class="myButton">stop</button>
+	</div>
+	<div class="container" id="ani">
+	</div>
+	<div class="container" id="ani2">
+	</div>
+	<table class="myTable">
+	<tr>
+		<td>
+			<font size=5>Output:</font>
+		</td>
+		<td>
+			<div id='output' class='myText'></div>
+		</td>
+	</tr>
+	</table>
+</body>
+</html>

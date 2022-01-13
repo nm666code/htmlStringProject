@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset = "utf-8"></meta>
+<title>Result</title>
+<link rel = "stylesheet" href = "style.css">
+<script>
+var sc = localStorage.getItem('sc');
+var comments = ['要加油回去多看幾次','不錯但還有進步的空間','太讚了直接滿分'];
+function init(){
+	var ref = document.getElementById("content");
+	var ref2 = document.getElementById("comments");
+	var ref3 = document.getElementById("img");
+	ref.innerHTML = 'Your score: '+sc*20; 
+	if(sc<3){
+		ref2.innerHTML = comments[0];
+		ref3.innerHTML = "<img src='oil.jpg' height=200px>";
+	}
+	else if(sc<5){
+		ref2.innerHTML = comments[1];
+		ref3.innerHTML = "<img src='img/good.png' height=200px>";
+	}
+	else {
+		ref2.innerHTML = comments[2];
+		ref3.innerHTML = "<img src='img/dancing.gif' height=200px>";
+	}
+}
+
+function homepage(){
+	window.open("../homepage.html","_self");
+}
+</script>
+</head>
+<body onload = "init()" bgcolor=#f5f5dc>
+<div class="content">
+	<p align="center" id = 'content' style="font-size: 40px;"></p>
+	<p align="center" id = 'comments' style="font-size: 40px;"></p>
+	<p align="center" id = 'img' style="font-size: 40px;"></p>
+	<p align='center'><button onclick="homepage()" class="myButton">homepage</button></p>
+</div>
+</body>
+</html>

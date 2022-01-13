@@ -1,0 +1,145 @@
+body{
+	margin:0;
+	padding:0;
+}
+.box{
+	position: relative;
+	height: 100px;
+	width: 100px;
+	background-color:pink;
+	border-radius: 10px;
+	border: 2px solid black;
+	text-align: center;
+	line-height: 100px;
+	font-size: 50px;
+}
+.box-invisible{
+	visibility:hidden;
+}
+.box-left{
+	animation-name:left;
+    animation-duration:2s;
+	animation-iteration-count: infinite;
+}
+@keyframes left{
+    from{
+        left:0;
+    }
+    75%{
+        left:-104px;
+    }
+	to{
+        left:-104px;
+    }
+}
+.box-right{
+	animation-name:right;
+    animation-duration:2s;
+	animation-iteration-count: infinite;
+}
+@keyframes right{
+    from{
+        left:0;
+    }
+    to{
+        left:20px;
+    }
+}
+.box-down{
+	animation-name:down;
+    animation-duration:2s;
+	animation-iteration-count: infinite;
+}
+@keyframes down{
+    from{
+		top:0;
+    }
+    to{
+		top:100px;
+    }
+}
+.box-opacity{
+	animation-name:opacity;
+    animation-duration:2s;
+	animation-iteration-count: infinite;
+}
+@keyframes opacity{
+    from{
+        opacity:1;
+    }
+    75%{
+        opacity:0;
+    }
+	to{
+        opacity:0;
+    }
+}
+.container{
+	margin-top: 20px;
+    display: flex;
+    justify-content: center; 
+}
+.myText{
+	margin: 10px;
+	font-size:.3in;
+}
+
+.myTable {
+	display: flex;
+    justify-content: center; 
+    align-items: center; 
+	width: 100%;
+	height: 20%;
+	margin: 0 auto;
+}
+.myButton{
+	width:150px;
+	height:50px;
+	font-size:22px;
+	border:0;
+	background-color:#D94600;
+	color:#fff;
+	border-radius:10px;
+}
+
+.quiz-container{
+  margin:0 auto;
+  width: 600px;
+  border: 1px #FFAC55 solid;
+}
+
+.sn{ 
+	top: 10px;
+	width: 30px;
+	padding: 1px 3px 1px 3px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 15px;
+	border-radius: 50%;
+	color: #fff;
+	background: #FF5151;
+}
+.option-item {
+	font-size: 18px;
+    display: block;
+    padding: 4px 0px;
+    padding-top: 4px;
+    padding-right: 0px;
+    padding-bottom: 4px;
+    padding-left: 0px;
+}
+.option {
+    display: block;
+    overflow: hidden;
+}
+.hint-panel {
+	font-size: 18px;
+    display: block;
+    position: relative;
+    padding: 10px;
+    min-height: 56px;
+	box-sizing: border-box;
+	margin:0 auto;
+	width: 600px;
+	border: 1px #FFAC55 solid;
+}

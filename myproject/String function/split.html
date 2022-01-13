@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset = "utf-8"></meta>
+<title>字串分割</title>
+<link rel = "stylesheet" href = "style.css">
+<script  src="control.js">
+</script>
+</head>
+<body bgcolor = wheat>
+	<table width=100%>
+		<td>
+			<font size=25>&nbsp;Str.Split(Separator)</font>
+		</td>
+		<td align=right>
+			<button onclick="homepage()" class="myButton">homepage</button>
+		</td>
+	</table>
+	<hr>
+	<table class="myTable">
+	<tr>
+		<td>
+			<font size=5>Str:</font>
+		</td>
+		<td>
+			<input type=text id='inString' class='myText'>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<font size=5>Separator:</font>
+		</td>
+		<td>
+			<input type=text id='separator' class='myText'>
+		</td>
+	</tr>
+	</table>
+	<div align = center>
+		<button onclick="splitRun()" class="myButton">run</button>&nbsp;
+		<button onclick="splitStop()" class="myButton">stop</button>
+	</div>
+	<div class="container" id="ani"  style="height:300px">
+		<div id = "box1" class="box">
+			A
+		</div><div id = "box2" class="box">
+			,
+		</div><div id = "box3" class="box">
+			B
+		</div>
+	</div>
+	<table class="myTable">
+	<tr>
+		<td>
+			<font size=5>Output:</font>
+		</td>
+		<td>
+			<div id='outString' class='myText'></div>
+		</td>
+	</tr>
+	</table>
+</body>
+</html>

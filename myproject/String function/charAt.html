@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset = "utf-8"></meta>
+<title>CharAt</title>
+<link rel = "stylesheet" href = "style.css">
+<script>
+var timerid;
+var inString;
+var index;
+var aniRef;
+var aniRef2;
+var outputRef;
+var cur = 0;
+var speed = 1000;
+
+function init(){
+	inString = document.getElementById('inString').value;
+	index = document.getElementById('index').value;
+	aniRef = document.getElementById('ani');
+	aniRef2 = document.getElementById('ani2');
+	outputRef = document.getElementById('output');
+}
+
+function charAtRun(){
+	init();
+	outputRef.innerHTML = inString.charAt(index);
+	start();
+}
+
+function charAtStop(){
+	init();
+	stop();
+	reset();
+}
+
+function next(){
+	if(cur <= index){
+		draw();
+		cur++;
+	}
+}
+
+function draw(){
+	var aniCode = "";
+	var aniCode2 = "";
+	for(var i = 0; i < inString.length; i++){
+		if(i==cur){
+			aniCode+="<div class='box' style='background-color:yellow;'>"+inString.charAt(i)+"</div>";
+			aniCode2+="<div class='box' style='background-color:yellow;'>"+i+"</div>";
+		}
+		else{
+			aniCode+="<div class='box'>"+inString.charAt(i)+"</div>";
+			aniCode2+="<div class='box'>"+i+"</div>";
+		}
+	}
+	aniRef.innerHTML = aniCode;
+	aniRef2.innerHTML = aniCode2;
+}
+
+function reset(){
+	var aniCode = "";
+	var aniCode2 = "";
+	cur = 0;
+	for(var i = 0; i < inString.length; i++){
+		aniCode+="<div class='box'>"+inString.charAt(i)+"</div>";
+		aniCode2+="<div class='box'>"+i+"</div>";
+	}
+	aniRef.innerHTML = aniCode;
+	aniRef2.innerHTML = aniCode2;
+}
+
+function start(){
+	window.clearInterval(timerid);
+	timerid = window.setInterval("next();", speed);
+}
+	
+function stop(){
+	window.clearInterval(timerid);
+}
+
+function homepage(){
+	window.open("../homepage.html","_self");
+}
+</script>
+</head>
+<body bgcolor = #f5f5dc>
+	<table width=100%>
+		<td>
+			<font size=25>&nbsp;String.charAt(Index)</font>
+		</td>
+		<td align=right>
+			<button onclick="homepage()" class="myButton">homepage</button>
+		</td>
+	</table>
+	<hr>
+	<table class="myTable">
+	<tr>
+		<td>
+			<font size=5>String:</font>
+		</td>
+		<td>
+			<input type=text id='inString' class='myText'>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<font size=5>Index:</font>
+		</td>
+		<td>
+			<input type=number id='index' class='myText'>
+		</td>
+	</tr>
+	</table>
+	<div align = center>
+		<button onclick="charAtRun()" class="myButton">run</button>&nbsp;
+		<button onclick="charAtStop()" class="myButton">stop</button>
+	</div>
+	<div class="container" id="ani">
+	</div>
+	<div class="container" id="ani2">
+	</div>
+	<table class="myTable">
+	<tr>
+		<td>
+			<font size=5>Output:</font>
+		</td>
+		<td>
+			<div id='output' class='myText'></div>
+		</td>
+	</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset = "utf-8"></meta>
+<title>Quiz</title>
+<link rel = "stylesheet" href = "style.css">
+<script>
+var sc = 0;
+var isCorrect = [0,0,0,0,0];
+var hints = ["hint: var str='aabb' st2=str.split(ab) str2等於[a,b]",
+			"hint: 從0開始由前往後數第n個字母",
+			"hint: 加號左邊放前面，加號右邊放後面",
+			"hint: 從0開始由前往後數，第二個參數是結束位置不是長度，結果不包括結束位置",
+			"hint: 從0開始由前往後數，第二個參數是長度不是結束位置"];
+function correct(Qid){
+	isCorrect[Qid-1] = 1;
+	btvisible();
+}
+function incorrect(Qid){
+	var ref;
+	if(Qid==1)
+		ref=document.getElementById('Q1_hint');
+	else if(Qid==2)
+		ref=document.getElementById('Q2_hint');
+	else if(Qid==3)
+		ref=document.getElementById('Q3_hint');
+	else if(Qid==4)
+		ref=document.getElementById('Q4_hint');
+	else if(Qid==5)
+		ref=document.getElementById('Q5_hint');
+	ref.innerHTML = hints[Qid-1];
+	isCorrect[Qid-1] = 0;
+	btvisible();
+}
+function btvisible(){
+	var ref = document.getElementById("finish");
+	ref.style="width:100px;height:30px;visibility:visible";
+}
+
+function finish(){
+	for(var i=0; i<isCorrect.length; i++)
+		if(isCorrect[i])
+			sc++;
+	localStorage.setItem("sc",sc);
+	window.open("result.html","_self");
+}
+</script>
+</head>
+<body bgcolor=#f5f5dc>
+	<div style="text-align:center">
+		<font size=20>問題時間</font>
+	</div>
+	<hr>
+	<div class="quiz-container">
+		<div class="sn">1</div>
+		<div class="content">
+			請問下面的程式會輸出什麼?<br>
+			<img src = "img/split.PNG"><br>
+			<ul>
+				<li class = "option-item"><input type=radio name="q1" onclick="incorrect(1);">['', 'c', 'd', 'e', 'f']</li>
+				<li class = "option-item"><input type=radio name="q1" onclick="incorrect(1);">['c', 'd', 'e', 'f']</li>
+				<li class = "option-item"><input type=radio name="q1" onclick="incorrect(1);">['', '', '', '', '', '', '', 'c', '', '', '', 'd', '', '', '', 'e', '', '', '', 'f']</li>
+				<li class = "option-item"><input type=radio name="q1" onclick="correct(1);">['a', 'b', 'c', 'd', 'e', 'f']</li>
+			</ul>
+		</div>
+	</div>
+	<div class="hint-panel" id="Q1_hint"></div>
+	<br>
+	<div class="quiz-container">
+		<div class="sn">2</div>
+		<div class="content">
+			請問下面的程式會輸出什麼?<br>
+			<img src = "img/charAt.PNG"><br>
+			<ul>
+				<li class = "option-item"><input type=radio name="q2" onclick="incorrect(2);">e<br></li>
+				<li class = "option-item"><input type=radio name="q2" onclick="incorrect(2);">b<br></li>
+				<li class = "option-item"><input type=radio name="q2" onclick="incorrect(2);">a<br></li>
+				<li class = "option-item"><input type=radio name="q2" onclick="correct(2);">d<br></li>
+			</ul>
+		</div>
+	</div>
+	<div class="hint-panel" id="Q2_hint"></div>
+	<br>
+	<div class="quiz-container">
+		<div class="sn">3</div>
+		<div class="content">
+			請問下面的程式會輸出什麼?<br>
+			<img src = "img/plus.PNG"><br>
+			<ul>
+				<li class = "option-item"><input type=radio name="q3" onclick="incorrect(3);">null<br></li>
+				<li class = "option-item"><input type=radio name="q3" onclick="incorrect(3);">142536<br></li>
+				<li class = "option-item"><input type=radio name="q3" onclick="incorrect(3);">456123<br></li>
+				<li class = "option-item"><input type=radio name="q3" onclick="correct(3);">123456<br></li>
+			</ul>
+		</div>
+	</div>
+	<div class="hint-panel" id="Q3_hint"></div>
+	<br>
+	<div class="quiz-container">
+		<div class="sn">4</div>
+		<div class="content">
+			請問下面的程式會輸出什麼?<br>
+			<img src = "img/slice.PNG"><br>
+			<ul>
+				<li class = "option-item"><input type=radio name="q4" onclick="incorrect(4);">jkl<br></li>
+				<li class = "option-item"><input type=radio name="q4" onclick="incorrect(4);">sdfgh<br></li>
+				<li class = "option-item"><input type=radio name="q4" onclick="incorrect(4);">sdfg<br></li>
+				<li class = "option-item"><input type=radio name="q4" onclick="correct(4);">sdf<br></li>
+			</ul>
+		</div>
+	</div>
+	<div class="hint-panel" id="Q4_hint"></div>
+	<br>
+	<div class="quiz-container">
+		<div class="sn">5</div>
+		<div class="content">
+			請問下面的程式會輸出什麼?<br>
+			<img src = "img/substr.PNG"><br>
+			<ul>
+				<li class = "option-item"><input type=radio name="q5" onclick="incorrect(5);">hjkl<br></li>
+				<li class = "option-item"><input type=radio name="q5" onclick="incorrect(5);">asd<br></li>
+				<li class = "option-item"><input type=radio name="q5" onclick="incorrect(5);">sdf<br></li>
+				<li class = "option-item"><input type=radio name="q5" onclick="correct(5);">sdfg<br></li>
+			</ul>
+		</div>
+	</div>
+	<div class="hint-panel" id="Q5_hint"></div>
+	<p align="center">
+		<button onclick="finish();" id="finish" style="width:100px;height:30px;visibility:hidden">我做完了</button>
+	</p>
+</body>
+</html>
