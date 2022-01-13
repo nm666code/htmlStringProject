@@ -25,7 +25,7 @@ function plusRun(){
 	for(var i = 0; i < lhs.length; i++)
 		aniCode+="<div class='box'>"+lhs.charAt(i)+"</div>";
 	aniCode+="<div class='box box-invisible'>"+"</div>";
-	for(var i = 0; i < lhs.length; i++)
+	for(var i = 0; i < rhs.length; i++)
 		aniCode+="<div class='box box-left'>"+rhs.charAt(i)+"</div>";
 	aniRef.innerHTML = aniCode;
 }
@@ -35,7 +35,7 @@ function plusStop(){
 	for(var i = 0; i < lhs.length; i++)
 		aniCode+="<div class='box'>"+lhs.charAt(i)+"</div>";
 	aniCode+="<div class='box box-invisible'>"+"</div>";
-	for(var i = 0; i < lhs.length; i++)
+	for(var i = 0; i < rhs.length; i++)
 		aniCode+="<div class='box'>"+rhs.charAt(i)+"</div>";
 	aniRef.innerHTML = aniCode;
 }
